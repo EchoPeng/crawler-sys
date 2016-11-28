@@ -1,0 +1,136 @@
+题目：（1）基于深度学习的场景识别应用（已经登陆，对打数据和深度学感兴趣的可以看看）
+论文要求阅读指定文献，并结合深度开发库caffe/tensorflow/theano等之一实现一个系统能对给定的图像或视频库进行训练，识别等。要求理解场景识别算法、深度学习库基本框架，程序量约1000行。
+
+
+[1] Li Wang,Dennis Sng,Deep Learning Algorithms with Applications to
+Video Analytics for A Smart City: A Survey,arXiv:1512.03131v1 
+[2] https://github.com/ahelou2/deep-learning-scene-recognition
+[3] Bolei Zhou,Agata Lapedriza,Jianxiong Xiao,Antonio Torralba,Aude Oliva,Learning Deep Features for Scene Recognition using Places Database,http://places.csail.mit.edu/places_NIPS14.pdf
+[4]Limin Wang, Sheng Guo,Weilin Huang,Yu Qiao,Places205-VGGNet Models for Scene Recognition,arXiv:1508.01667v1 
+[5]Olga Russakovsky et al, ImageNet Large Scale Visual Recognition Challenge,arXiv:1409.0575v3 
+[6]Christian Szegedy Alexander Toshev Dumitru Erhan, Deep Neural Networks for Object Detection,http://papers.nips.cc/paper/5207-deep-neural-networks-for-object-detection.pdf
+[7]Karen Simonyan, Andrew Zisserman,Very Deep Convolutional Networks for Large-Scale Image Recognition,
+[8]Representation Learning: A Review and New Perspectives, Yoshua Bengio, Aaron Courville, Pascal Vincent, Arxiv, 2012.
+[9]The monograph or review paper Learning Deep Architectures for AI (Foundations & Trends in Machine Learning, 2009).
+[10]Deep Machine Learning – A New Frontier in Artificial Intelligence Research – a survey paper by Itamar Arel, Derek C. Rose, and Thomas P. Karnowski.
+[11]Graves, A. (2012). Supervised sequence labelling with recurrent neural networks(Vol. 385). Springer.
+
+（1）2016-12-1~2016-12-15：文献阅读，开源开发库调查和比较、选择。
+（2）2016-12-15~2016-12-30：理论和开发技术学习，初步确定系统框架。
+（3）2017-1-1~2017-3-1：系统原型初步实现。
+（4）2017-3-1~2017-4-1：系统测试，论文初稿。
+（5）2017-4-1~2017-5-1：系统验收和论文修订。
+（6）论文答辩。
+
+题目：（2）椭圆曲线算法在移动支付（或在无线网络）中的应用（已经登陆，是供江筱倩参考的的，她也可以选其它题目做）
+
+
+
+题目：（3）基于caffe和深度学习的人脸识别系统（已经登陆，供电子班的杨念参考，对打数据和深度学感兴趣的也可以看看）
+
+要求基于caffe（其它深度学习开发库亦可）和深度学习算法，结合opencv实现人脸识别系统的训练和识别。 要求很好的理解人脸识别算法、深度学习库基本框架、opencv相关算法，程序量约1000-2000行。
+
+[1] caffe开发库，http://caffe.berkeleyvision.org/
+[2] Omkar M. Parkhi et al，Deep Face Recognition，https://www.robots.ox.ac.uk/~vgg/publications/2015/Parkhi15/parkhi15.pdf
+[3]  Sheng-hua Zhong, Attention Modeling for Face Recognition via Deep Learning,http://mindmodeling.org/cogsci2012/papers/0453/paper0453.pdf
+[4]Yi Sun et al, Deep Learning Face Representation by Joint Identification-Verification, http://papers.nips.cc/paper/5416-deep-learning-face-representation-by-joint-identification-verification.pdf
+[5]Mostafa Mehdipour Ghazi,A Comprehensive Analysis of Deep Learning Based Representation for Face Recognition,arXiv:1606.02894v1 
+[6]Brandon Amos, Bartosz Ludwiczuk,Mahadev Satyanarayanan,OpenFace: A general-purpose face recognition
+library with mobile applications,http://reports-archive.adm.cs.cmu.edu/anon/anon/2016/CMU-CS-16-118.pdf
+[7]Weihong Wang , Jie Yang, Jianwei Xiao, Sheng Li, Dixin Zhou,Face Recognition Based on Deep Learning,in "Human Centered Computing",Volume 8944 of the series Lecture Notes in Computer Science pp 812-820,2015
+[8]Xiaogang Wang (2016), "Deep Learning in Object Recognition, Detection, and Segmentation", Foundations and Trends? in Signal Processing: Vol. 8: No. 4, pp 217-382. http://dx.doi.org/10.1561/2000000071
+[9]Face Recognition with OpenCV,http://docs.opencv.org/2.4/modules/contrib/doc/facerec/facerec_tutorial.html
+[10]
+（1）2016-12-1~2016-12-15：文献阅读，了解caffe或其它深度学习开发库调查和比较、选择。
+（2）2016-12-15~2016-12-30：人脸识别算法和深度学习理论和caffe开发技术学习，初步确定系统实现方案和框架。
+（3）2017-1-1~2017-3-1：系统原型初步实现。
+（4）2017-3-1~2017-4-1：系统测试，论文初稿。
+（5）2017-4-1~2017-5-1：系统验收和论文修订。
+（6）论文答辩。
+    
+题目：（4）基于android的校园贴吧app设计（供王华参考选题，你们在学校网内帮周老师填一下）
+
+要求设计一个androip app, 实现 校园贴吧的基本功能和网站管理功能。使用技术是eclipse+apache+mysql+php. 基本亮功能是实现关键词自动过滤功能、后台的数据库mysql的线程隔离功能。
+
+[1] eclipse, www.eclipse.com
+[2] lamp, www.apache.org
+[3] nosql?
+[4]Budi Kurniawan,Android Application Development A Tutorial (A Tutorial series),
+,Brainy Software,2015.
+[5]Rick Boyer, Kyle Mew,Android Application Development Cookbook, 2nd Edition: Over 100 recipes to help you solve the most common problems faced by Android Developers today,Packt Publishing, ,2016.
+[7] Deepak Vohra ,Advanced Java EE Development with WildFly: Your one-stop guide to developing Java EE applications with the Eclipse IDE, Maven, and WildFly 8.1,Packt Publishing, 	2015.
+[8] Marko Gargenta, Masumi Nakamura, 	Learning Android, 2nd Edition: Develop Mobile Apps Using Java and Eclipse
+,O'Reilly Media,2014.	
+[9] Java & Struts2 & Spring & Hibernate & Eclipse, eclipse java ee, https://zh.scribd.com/document/38530190/Struts-Spring-Hibernate-Tutorial,http://www.mkyong.com/spring/maven-spring-hibernate-mysql-example/
+[10]W. Jason Gilmore 	Beginning PHP and MySQL: From Novice to Professional, Fourth Edition [4 ed.],,2010.
+[11]
+
+（1）2016-12-1~2016-12-15：文献阅读，了解eclipse,php,mysql,或bit web server开发平台和比较、选择。
+（2）2016-12-15~2016-12-30：软件工程、java、数据库连接、工具链等开发技术学习，初步确定系统实现方案和框架。
+（3）2017-1-1~2017-3-1：系统原型初步实现。
+（4）2017-3-1~2017-4-1：系统测试，论文初稿。
+（5）2017-4-1~2017-5-1：系统验收和论文修订。
+（6）论文答辩。
+
+参考文献：
+
+
+（1）2016-12-1~2016-12-15：文献阅读，了解caffe或其它深度学习开发库调查和比较、选择。
+（2）2016-12-15~2016-12-30：人脸识别算法和深度学习理论和caffe开发技术学习，初步确定系统实现方案和框架。
+（3）2017-1-1~2017-3-1：系统原型初步实现。
+（4）2017-3-1~2017-4-1：系统测试，论文初稿。
+（5）2017-4-1~2017-5-1：系统验收和论文修订。
+（6）论文答辩。
+
+
+题目：（5）基于batch nomalization的机器学习加速实现（你们在学校网内帮周老师填一下，对打数据和深度学感兴趣的可以看看）
+
+要求：实现基于batch nomalization的机器学习加速实现，主要基于gpu实现数据的训练和识别，编程量较多，但编程语言不限制。
+
+
+参考： 
+【1】Sergey Ioffe,Christian Szegedy,Batch Normalization: Accelerating Deep Network Training by
+Reducing Internal Covariate Shift,arXiv:1502.03167v1, 
+【2】github project for BN: Batch Normalization Layer for Caffe, https://github.com/ChenglongChen/batch_normalization
+【3】《Spatial Transformer Networks》
+
+
+【4】https://github.com/fchollet/keras
+【5】Caffe的BN实现：https://github.com/ducha-aiki/caffe/tree/bn
+
+【6】cxxnet的BN实现：https://github.com/antinucleon/cxxnet
+
+
+题目：（6）网络爬虫与大数据分析系统
+
+要求：爬虫引用创建的docker  container，包括的模块有scrapy, mongo, celery, rabbitmq等，实现关键词删选，排序，分析，推荐等功能。数据用hdfs+hive等系统存储。容器管理用docker或spark，计算用spark或yarn等。编程原则上用python。
+
+[1]  docker与爬虫， https://github.com/LiuRoy/spider_docker
+[2]  spark与爬虫, https://github.com/USCDataScience/sparkler
+[3]  Sanjay Ghemawat · Howard Gobioff · Shuntak Leung,The Google file system
+    
+[4]Jeon, Hocheol. "Lexicon-based context-sensitive reference comments crawler." Journal of Information Science 41.3 (2015): 342-353
+[5] http://java-source.net/open-source/crawlers Open Source Crawlers in Java
+[6] http://en.wikipedia.org/wiki/Web_crawler#Open-source_crawlers Open-source crawlers
+
+（1）2016-12-1~2016-12-15：文献阅读，了解爬虫开发库调查和比较、选择。
+（2）2016-12-15~2016-12-30：大数据开发平台和技术学习，初步确定系统实现方案和框架。
+（3）2017-1-1~2017-3-1：系统原型初步实现。
+（4）2017-3-1~2017-4-1：系统测试，论文初稿。
+（5）2017-4-1~2017-5-1：系统验收和论文修订。
+（6）论文答辩。
+
+
+题目：（7）基于Akka-Cassandra-Spark实时大数据分析系统 
+
+要求：实现用Akka-Cassandra-Spark实现一个高并发的、分布式消息处理系统。比如24小时内1亿个请求的系统。
+
+参考文献：（按下面提示自己补充）
+
+[1] scala 编程语言
+
+[2] actor模型
+
+[3] akka
+
+[4] 并发系统
