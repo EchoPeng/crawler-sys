@@ -1,0 +1,13 @@
+dev:
+    image: jdspider
+
+    volumes:
+        - ./:/spider-master
+        - ./jd-spider/data:/data
+    ports:
+        - "20000:27017"
+        - "20001:15672"
+    privileged: true
+    tty: true
+    stdin_open: true
+    restart: always
