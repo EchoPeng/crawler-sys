@@ -2,11 +2,13 @@
 #from HTMLParser import HTMLParser
 from lxml import etree
 from lxml import html
+import urllib
 from collections import OrderedDict
 from product_info import product
 import json
 import sys
 import re
+import json
 class myparser:
 	hrefs=None
 	href=None
@@ -77,9 +79,21 @@ class myparser:
 		#p.append()
 		#return list
 		pass
-		
+	def getPrice(self,skuId):
+		reqURL = 'https://p.3.cn/prices/mgets?skuIds=J_'+skuId
+		resultJSON = urllib.urlopen(reqURL).read().decode("utf-8")
+		tmpJSONDic = json.loads(resultJSON)
+		pricetmp = tmpJSONDic[0][u'p']
+		price = pricetmp[0:]
+		return price
+
 	def getFinalArg(self,lis):
-		pImgPattern='src="(.*?)">'
+
+		pskuPattern='data-sku="(.*?)"'
+		psku=lis[0].xpath(u"//div[@class='gl-i-wrap j-sku-item']")
+
+		#pImgPattern='src="(.*?)">'
+		pImgPattern='(src|data-lazy-img)="(.*?)">'
 		pImg=lis[0].xpath(u"//div[@class='p-img']")
 
 		pNamePattern='<em>(.*?)</em>'
@@ -90,11 +104,23 @@ class myparser:
 		pNum=len(pImg)
 		print("pImg len : "+str(len(pImg)))
 		for i in range(3,pNum):
+
+			pskuHTML=str(etree.tostring(psku[i],encoding='utf-8',pretty_print=True,method='html'))
+			pskuId=re.compile(pskuPattern,re.S).findall(pskuHTML)
+			if(len(pskuId)>0):
+				print('pskuId'+str(i)+' : '+pskuId[0])
+				price=self.getPrice(pskuId[0])
+				print('price'+str(i)+' : '+price)
+
+
 			pImgHTML=str(etree.tostring(pImg[i],encoding='utf-8',pretty_print=True,method='html'))
 			pImgSrc=re.compile(pImgPattern,re.S).findall(pImgHTML)
 			#print('pImgHTML : '+pImgHTML)
+			# if(i>3):
+			# 	print('pImg'+str(i)+' : '+etree.tostring(pImg[i],encoding='utf-8',pretty_print=True,method='html'))
 			if(len(pImgSrc)>0):
-				print('pImgSrc'+str(i)+' : '+pImgSrc[0])
+				#print('pImgSrc'+str(i)+' : '+pImgSrc[0])
+				print('pImgSrc'+str(i)+' : '+pImgSrc[0][1])
 
 			pNameHTML=str(etree.tostring(pName[i],encoding='utf-8',pretty_print=True,method='html'))
 			pNameTemp=re.compile(pNamePattern,re.S).findall(pNameHTML)

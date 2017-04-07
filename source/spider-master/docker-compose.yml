@@ -3,11 +3,12 @@ dev:
 
     volumes:
         - ./:/spider-master
-        - ./jd-spider/data:/data
+#        - ./jd-spider/data:/data
+        - /data:/data
     ports:
         - "20000:27017"
         - "20001:15672"
     privileged: true
     tty: true
     stdin_open: true
-    restart: always
+#    restart: 'no'
