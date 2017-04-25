@@ -63,7 +63,7 @@ class jdspider(object):
 			file.write(source)
 			file.close()
 		else:
-			os.mkdir(fileFolder)
+			os.makedirs(fileFolder)
 			file=open(filePath,"wb")
 			file.write(source)
 			file.close()
