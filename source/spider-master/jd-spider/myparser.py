@@ -5,7 +5,8 @@ from lxml import html
 import urllib2
 import urllib
 from collections import OrderedDict
-from product_info import product
+from productInfo import product
+import redisoperate
 import json
 import sys,time
 import re,os
@@ -26,13 +27,14 @@ class myparser:
 		# 'Connection' : 'keep-alive',
 		# 'Host' : 'p.3.cn',
 		# 'Upgrade-Insecure-Requests' : 1,
-		'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/55.0.2883.87 Safari/537.36'
+		'User-Agent' : 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2924.87 Safari/537.36'
+		# '':'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/56.0.2661.102 Safari/537.36'
 	}
 	proxies = {
-		'http': '123.165.125.168:8118',
-		'http': '1.196.235.12:808',
-		'http': '112.234.52.97:24688',
-		'http': '117.65.3.71:9649',
+		'http': '222.85.50.90:808',
+		'http': '222.85.39.168:808',
+		'http': '121.232.144.48:9000',
+		'http': '220.248.87.214:8080',
 		'http': '117.69.12.90:22667',
 		'http': '122.237.40.24:808',
 		'http': '171.13.37.194:808',
@@ -153,7 +155,9 @@ class myparser:
 		callback = 'callback=jQuery'+str(7148011)
 		# reqURL = 'https://p.3.cn/prices/mgets?'+callback+'&skuIds='+skuIds
 		# reqURL = 'https://p.3.cn/prices/mgets?skuIds='+skuIds
-		reqURL = "https://p.3.cn/prices/mgets?type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		# https://p.3.cn/prices/mgets?callback=jQuery9741103&type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&skuIds=J_4835534%2CJ_3478880%2CJ_3846673%2CJ_3129274%2CJ_11384140980%2CJ_11301207840&source=item-pc
+		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=14931164980011724710239&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
 		print('reqURL : '+reqURL)
 		resultJSON=''
 		# reqJSON=None
@@ -187,16 +191,16 @@ class myparser:
 		prices=resultJSON
 		return prices
 
-	def getCommentSummary(self,summaries,skuId):
-		summary = ''
-		summaries = json.loads(str(summaries))
-		summaries = summaries['CommentsCount']
-		for item in summaries:
-			# item = json.loads(str(item))
-			# print("item-summary : "+str(item))
-		#	print("summary['ShowCountStr'] : "+item['ShowCountStr'])
-			break
-		return summary
+	# def getCommentSummary(self,summaries,skuId):
+	# 	summary = ''
+	# 	summaries = json.loads(str(summaries))
+	# 	summaries = summaries['CommentsCount']
+	# 	for item in summaries:
+	# 		# item = json.loads(str(item))
+	# 		# print("item-summary : "+str(item))
+	# 	#	print("summary['ShowCountStr'] : "+item['ShowCountStr'])
+	# 		break
+	# 	return summary
 
 
 	def getCommentSummaries(self,referenceIds):
@@ -235,6 +239,19 @@ class myparser:
 		summaries=resultJSON
 		return summaries
 
+	def getPJSON(self,prices):
+		pricesJSON = json.loads(prices)
+		# key-value id-p
+		pJSON = {}
+		# print("pricesJSON : "+str(pricesJSON))
+		for i in range(0,len(pricesJSON)):
+			#print("pricesJSON[ "+str(i) +" ] :"+str(pricesJSON[i]))
+			pid = str(pricesJSON[i][u'id'])
+			pprice = str(pricesJSON[i][u'p'])
+			pJSON.setdefault(pid,pprice)
+			pass
+		return pJSON
+
 	def getFinalArg(self,lis):
 		file=self.file
 		jsonfile=self.jsonfile
@@ -257,29 +274,49 @@ class myparser:
 
 		skuIds=''
 		referenceIds=''
-		for i in range(3,pNum):
+		for i in range(0,pNum):
 			pskuHTML=str(etree.tostring(psku[i],encoding='utf-8',pretty_print=True,method='html'))
+			print >>jsonfile,'sku+summaries : '+pskuHTML
 			pskuId=re.compile(pskuPattern,re.S).findall(pskuHTML)
 			if(len(pskuId)>0):
 				skuIds=skuIds+'J_'+pskuId[0]+'%2C'
 				referenceIds=referenceIds+pskuId[0]+','
 		prices=self.getPrices(skuIds)
 		summaries=self.getCommentSummaries(referenceIds)
-		print('prices = '+prices)
+		# print('prices = '+prices)
 	#	print('summaries = '+summaries)
 		print >>jsonfile,prices
 		print >>file,'summaries='+' : '+summaries
-		# pricesJSON = json.loads(prices)
 
+		# pricesJSON = json.loads(prices)
+		# key-value id-p
+		# pJSON = {}
+		pJSON = self.getPJSON(prices)
+		# sJSON = self.getSJSON(summaries)
+		# for i in range(0,len(pricesJSON)):
+		# 	#print("pricesJSON[ "+str(i) +" ] :"+str(pricesJSON[i]))
+		# 	pid = str(pricesJSON[i][u'id'])
+		# 	pprice = str(pricesJSON[i][u'p'])
+		# 	pJSON.setdefault(pid,pprice)
+		# 	pass
+		# print('pJSON keys : '+str(pJSON.keys()))
 		# print(file)
 		for i in range(3,pNum):
+			pInfo = product()
+
 			pskuHTML=str(etree.tostring(psku[i],encoding='utf-8',pretty_print=True,method='html'))
+			print >>jsonfile,"getprice : "+pskuHTML
 			pskuId=re.compile(pskuPattern,re.S).findall(pskuHTML)
 			if(len(pskuId)>0):
 				# print('pskuId'+str(i)+' : '+pskuId[0])
 				# print >>file,'pskuId'+str(i)+' : '+pskuId[0]
-				# price=self.getPrice(prices,pskuId[0])
-	#			summary=self.getCommentSummary(summaries,pskuId[0])
+				skuId = 'J_'+pskuId[0]
+				pInfo.productId=pskuId[0]
+
+				price=pJSON[skuId]
+				pInfo.pPrice=pJSON[skuId]
+
+				# summary=self.getCommentSummary(summaries,pskuId[0])
 				# print('price'+str(i)+' : '+price)
 				# print >>file,'price'+str(i)+' : '+price
 				pass
@@ -291,23 +328,29 @@ class myparser:
 			# if(i>3):
 			# 	print('pImg'+str(i)+' : '+etree.tostring(pImg[i],encoding='utf-8',pretty_print=True,method='html'))
 			if(len(pImgSrc)>0):
-				#print('pImgSrc'+str(i)+' : '+pImgSrc[0])
+				# print('pImgSrc'+str(i)+' : '+pImgSrc[0])
 				# print('pImgSrc'+str(i)+' : '+pImgSrc[0][1])
+				pInfo.pImg = pImgSrc[0][1]
 				print >>file,'pImgSrc'+str(i)+' : '+pImgSrc[0][1]
 
 			pNameHTML=str(etree.tostring(pName[i],encoding='utf-8',pretty_print=True,method='html'))
 			pNameTemp=re.compile(pNamePattern,re.S).findall(pNameHTML)
 			if(len(pNameTemp)>0):
 				# print('pName'+str(i)+' : '+pNameTemp[0])
+				pInfo.pName = pNameTemp[0]
 				print >>file,'pName'+str(i)+' : '+pNameTemp[0]
 
 			pShopHTML=str(etree.tostring(pShop[i],encoding='utf-8',pretty_print=True,method='html'))
 			pShopName=re.compile(pShopPattern,re.S).findall(pShopHTML)
 			if(len(pShopName)>0):
 				# print('pShopName'+str(i)+' : '+pShopName[0])
+				pInfo.pShop = pShopName[0]
 				print >>file,'pShopName'+str(i)+' : '+pShopName[0]
 			#print('pName'+' : '+pNameTemp)
 			# print('-----------------------------------------------------------------------------')
+			# print("pInfo : "+pInfo.pName)
+			rdb = redisoperate.Database()
+			rdb.add_productInfo(pInfo)
 			print >>file,'-----------------------------------------------------------------------------'
 		# for i in range(3,pNum+1):
 		# 	pImgHTML=str(etree.tostring(pImg[i],encoding='utf-8',pretty_print=True,method='html'))

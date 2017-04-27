@@ -59,7 +59,7 @@ def saveHtml():
 def mulThreadRun(jdDemo):
     q = multiprocessing.JoinableQueue()
     pw1 = multiprocessing.Process(target=run, args=(q,))
-    pw2 = multiprocessing.Process(target=run, args=(q,))
+    # pw2 = multiprocessing.Process(target=run, args=(q,))
     # pw3 = multiprocessing.Process(target=run, args=(q,))
     # pw4 = multiprocessing.Process(target=run, args=(q,))
     # pw5 = multiprocessing.Process(target=run, args=(q,))
@@ -75,7 +75,7 @@ def mulThreadRun(jdDemo):
     # pw15 = multiprocessing.Process(target=run, args=(q,))
     # pw16 = multiprocessing.Process(target=run, args=(q,))
     pw1.daemon = True
-    pw2.daemon = True
+    # pw2.daemon = True
     # pw3.daemon = True
     # pw4.daemon = True
     # pw5.daemon = True
@@ -91,7 +91,7 @@ def mulThreadRun(jdDemo):
     # pw15.daemon = True
     # pw16.daemon = True
     pw1.start()
-    pw2.start()
+    # pw2.start()
     # pw3.start()
     # pw4.start()
     # pw5.start()
