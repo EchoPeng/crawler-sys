@@ -26,18 +26,43 @@ class Database:
 
     def add_productInfo(self,pInfo):
         try:
-            key = pInfo.productId
+            name = "pInfo"
+            productId=pInfo.productId
+            key = "productId:"+productId
             val = json.dumps(pInfo, default=lambda o: o.__dict__, sort_keys=True, indent=4,ensure_ascii=False)
+            val = json.loads(val)
             # val = json.dumps(pInfo.__dict__)
-            print "val : "+val
+            # print "val : "+val
             r = redis.StrictRedis(host=self.host,port=self.port)
-            r.set(key,val)
+            r.hset(name,key,productId)
+            r.hmset(key,val)
         except Exception, exception:
             print exception
 
     def get_productInfo(self,pInfo):
         try:
             key = pInfo.productId
+            r = redis.StrictRedis(host=self.host,port=self.port)
+            value = r.get(key)
+            print value
+            return value
+        except Exception, exception:
+            print exception
+
+    def add_productResult(self,pInfo):
+        try:
+            key = 'J_'+pInfo.productId
+            val = pInfo.result
+            # val = json.dumps(pInfo.__dict__)
+            # print "val : "+val
+            r = redis.StrictRedis(host=self.host,port=self.port)
+            r.set(key,val)
+        except Exception, exception:
+            print exception
+
+    def get_productResult(self,pInfo):
+        try:
+            key = key = 'J_'+pInfo.productId
             r = redis.StrictRedis(host=self.host,port=self.port)
             value = r.get(key)
             print value

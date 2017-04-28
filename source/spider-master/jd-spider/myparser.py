@@ -252,6 +252,39 @@ class myparser:
 			pass
 		return pJSON
 
+	def getSJSON(self,summaries):
+		summariesJSON = json.loads(summaries)
+		# key-value id-p
+		summariesJSON = summariesJSON['CommentsCount']
+		sJSON = {}
+		# print("pricesJSON : "+str(pricesJSON))
+		for i in range(0,len(summariesJSON)):
+			#print("pricesJSON[ "+str(i) +" ] :"+str(pricesJSON[i]))
+			productId = str(summariesJSON[i][u'ProductId'])
+			commentCount = str(summariesJSON[i][u'CommentCount'])
+			commentCountStr = str(summariesJSON[i][u'CommentCountStr'])
+			averageScore = str(summariesJSON[i][u'AverageScore'])
+			generalCount = str(summariesJSON[i][u'GeneralCount'])
+			generalRate = str(summariesJSON[i][u'GeneralRate'])
+			goodCount = str(summariesJSON[i][u'GoodCount'])
+			goodRate = str(summariesJSON[i][u'GoodRate'])
+			poorCount = str(summariesJSON[i][u'PoorCount'])
+			poorRate = str(summariesJSON[i][u'PoorRate'])
+			tmpJSON = {}
+			tmpJSON.setdefault("productId",productId)
+			tmpJSON.setdefault("commentCount",commentCount)
+			tmpJSON.setdefault("commentCountStr",commentCountStr)
+			tmpJSON.setdefault("averageScore",averageScore)
+			tmpJSON.setdefault("generalCount",generalCount)
+			tmpJSON.setdefault("generalRate",generalRate)
+			tmpJSON.setdefault("goodCount",goodCount)
+			tmpJSON.setdefault("goodRate",goodRate)
+			tmpJSON.setdefault("poorCount",poorCount)
+			tmpJSON.setdefault("poorRate",poorRate)
+			sJSON.setdefault(productId,tmpJSON)
+			pass
+		return sJSON
+
 	def getFinalArg(self,lis):
 		file=self.file
 		jsonfile=self.jsonfile
@@ -292,7 +325,7 @@ class myparser:
 		# key-value id-p
 		# pJSON = {}
 		pJSON = self.getPJSON(prices)
-		# sJSON = self.getSJSON(summaries)
+		sJSON = self.getSJSON(summaries)
 		# for i in range(0,len(pricesJSON)):
 		# 	#print("pricesJSON[ "+str(i) +" ] :"+str(pricesJSON[i]))
 		# 	pid = str(pricesJSON[i][u'id'])
@@ -316,6 +349,38 @@ class myparser:
 				price=pJSON[skuId]
 				pInfo.pPrice=pJSON[skuId]
 
+				commentCount=sJSON[pskuId[0]]['commentCount']
+				pInfo.commentCount=commentCount
+
+				commentCountStr=sJSON[pskuId[0]]['commentCountStr']
+				pInfo.commentCountStr=commentCountStr
+
+				averageScore=sJSON[pskuId[0]]['averageScore']
+				pInfo.averageScore=averageScore
+
+				generalCount=sJSON[pskuId[0]]['generalCount']
+				pInfo.generalCount=generalCount
+
+				generalRate=sJSON[pskuId[0]]['generalRate']
+				pInfo.generalRate=generalRate
+
+				goodCount=sJSON[pskuId[0]]['goodCount']
+				pInfo.goodCount=goodCount
+
+				goodRate=sJSON[pskuId[0]]['goodRate']
+				pInfo.goodRate=goodRate
+
+				poorCount=sJSON[pskuId[0]]['poorCount']
+				pInfo.poorCount=poorCount
+
+				poorRate=sJSON[pskuId[0]]['poorRate']
+				pInfo.poorRate=poorRate
+
+				# price -
+				# averageScore +
+				# commentCount +
+				# goodRate +
+				pInfo.result = float(goodRate)*float(averageScore)*float(commentCount)/float(price)
 				# summary=self.getCommentSummary(summaries,pskuId[0])
 				# print('price'+str(i)+' : '+price)
 				# print >>file,'price'+str(i)+' : '+price
