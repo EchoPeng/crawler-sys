@@ -158,8 +158,7 @@ class myparser:
 		# https://p.3.cn/prices/mgets?callback=jQuery9741103&type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&skuIds=J_4835534%2CJ_3478880%2CJ_3846673%2CJ_3129274%2CJ_11384140980%2CJ_11301207840&source=item-pc
 		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
 		#reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=14931164980011724710239&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
-		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&skuIds="+skuIds
-		reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=14931164980011724710239&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		reqURL = "https://p.3.cn/prices/mgets?type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&skuIds="+skuIds
 		print('reqURL : '+reqURL)
 		resultJSON=''
 		# reqJSON=None
@@ -295,32 +294,26 @@ class myparser:
 		jsonfile=self.jsonfile
 		pskuPattern='data-sku="(.*?)"'
 		psku=lis[0].xpath(u"//div[@class='gl-i-wrap j-sku-item']")
-		# lislen = len(lis)
-		# lis0HTML=str(etree.tostring(lis[0],encoding='utf-8',pretty_print=True,method='html'))
-		# lis1HTML=str(etree.tostring(lis[1],encoding='utf-8',pretty_print=True,method='html'))
-		# print('lislen : '+str(lislen))
-		# print('lis0HTML : '+lis0HTML)
-		# print('lis1HTML : '+lis1HTML)
 
 		#pImgPattern='src="(.*?)">'
-		# pImgPattern='(src|data-lazy-img)="(.*?)">'
-		# pImg=lis[0].xpath(u"//div[@class='p-img']")
+		pImgPattern='(src|data-lazy-img)="(.*?)">'
+		pImg=lis[0].xpath(u"//div[@class='p-img']")
 
-		# pNamePattern='<em>(.*?)</em>'
-		# pName=lis[0].xpath(u"//div[@class='p-name']")
+		pNamePattern='<em>(.*?)</em>'
+		pName=lis[0].xpath(u"//div[@class='p-name']")
 
-		# pShopPattern='data-shop_name="(.*?)"'
-		# pShop=lis[0].xpath(u"//div[@class='p-shop']")
-		# pNum=len(pImg)
+		pShopPattern='data-shop_name="(.*?)"'
+		pShop=lis[0].xpath(u"//div[@class='p-shop']")
+		pNum=len(pImg)
 		# print("pImg len : "+str(len(pImg)))
-		# print >>file,"pImg len : "+str(len(pImg))
+		print >>file,"pImg len : "+str(len(pImg))
+
 
 		skuIds=''
 		referenceIds=''
-		for i in range(0,len(lis)):
+		for i in range(0,pNum):
 			pskuHTML=str(etree.tostring(psku[i],encoding='utf-8',pretty_print=True,method='html'))
 			print >>jsonfile,'sku+summaries : '+pskuHTML
-			# print('pskuHTML'+str(i)+" : "+pskuHTML)
 			pskuId=re.compile(pskuPattern,re.S).findall(pskuHTML)
 			if(len(pskuId)>0):
 				skuIds=skuIds+'J_'+pskuId[0]+'%2C'
@@ -345,25 +338,10 @@ class myparser:
 		# 	pass
 		# print('pJSON keys : '+str(pJSON.keys()))
 		# print(file)
-		for i in range(0,len(lis)):
+		for i in range(3,pNum):
 			pInfo = product()
-			lisHTML=str(etree.tostring(lis[i],encoding='utf-8',pretty_print=True,method='html'))
-			listmp = etree.HTML(lisHTML.decode('utf-8'))
-			# listmp0HTML=str(etree.tostring(listmp[0],encoding='utf-8',pretty_print=True,method='html'))
-			# print('listmp0HTML : '+listmp0HTML)
-			#pImgPattern='src="(.*?)">'
-			pImgPattern='(src|data-lazy-img)="(.*?)">'
-			pImg=listmp[0].xpath(u"//div[@class='p-img']")
 
-			pNamePattern='<em>(.*?)</em>'
-			pName=listmp[0].xpath(u"//div[@class='p-name']")
-
-			pShopPattern='data-shop_name="(.*?)"'
-			pShop=listmp[0].xpath(u"//div[@class='p-shop']")
-			pNum=len(pImg)
-
-			psku=listmp[0].xpath(u"//div[@class='gl-i-wrap j-sku-item']")
-			pskuHTML=str(etree.tostring(psku[0],encoding='utf-8',pretty_print=True,method='html'))
+			pskuHTML=str(etree.tostring(psku[i],encoding='utf-8',pretty_print=True,method='html'))
 			print >>jsonfile,"getprice : "+pskuHTML
 			pskuId=re.compile(pskuPattern,re.S).findall(pskuHTML)
 			if(len(pskuId)>0):
@@ -407,15 +385,13 @@ class myparser:
 				# commentCount +
 				# goodRate +
 				pInfo.result = float(goodRate)*float(averageScore)*float(commentCount)/float(price)
-				pInfo.resultpop = float(goodRate)*float(averageScore)*float(commentCount)
-				# pInfo.result = float(goodRate)*float(averageScore)*float(commentCount)
 				# summary=self.getCommentSummary(summaries,pskuId[0])
 				# print('price'+str(i)+' : '+price)
 				# print >>file,'price'+str(i)+' : '+price
 				pass
 
 
-			pImgHTML=str(etree.tostring(pImg[0],encoding='utf-8',pretty_print=True,method='html'))
+			pImgHTML=str(etree.tostring(pImg[i],encoding='utf-8',pretty_print=True,method='html'))
 			pImgSrc=re.compile(pImgPattern,re.S).findall(pImgHTML)
 			#print('pImgHTML : '+pImgHTML)
 			# if(i>3):
@@ -423,20 +399,21 @@ class myparser:
 			if(len(pImgSrc)>0):
 				# print('pImgSrc'+str(i)+' : '+pImgSrc[0])
 				# print('pImgSrc'+str(i)+' : '+pImgSrc[0][1])
-				pImgurl = pImgSrc[0][1]
-				pos = pImgurl.find('/jfs')
-				pos = pos+4
-				pInfo.pImg = pImgurl[pos:]
-				print >>file,'pImgSrc'+str(i)+' : '+pImgSrc[0][1]
+				pImgtmp = pImgSrc[0][1]
+				#//img10.360buyimg.com/n7/jfs/
+				tmplen = len('//img10.360buyimg.com/n7/jfs/')
+				pImgtmp = pImgtmp[tmplen:]
+				pInfo.pImg = pImgtmp
+				print >>file,'pImgSrc'+str(i)+' : '+pImgtmp
 
-			pNameHTML=str(etree.tostring(pName[0],encoding='utf-8',pretty_print=True,method='html'))
+			pNameHTML=str(etree.tostring(pName[i],encoding='utf-8',pretty_print=True,method='html'))
 			pNameTemp=re.compile(pNamePattern,re.S).findall(pNameHTML)
 			if(len(pNameTemp)>0):
 				# print('pName'+str(i)+' : '+pNameTemp[0])
 				pInfo.pName = pNameTemp[0]
 				print >>file,'pName'+str(i)+' : '+pNameTemp[0]
 
-			pShopHTML=str(etree.tostring(pShop[0],encoding='utf-8',pretty_print=True,method='html'))
+			pShopHTML=str(etree.tostring(pShop[i],encoding='utf-8',pretty_print=True,method='html'))
 			pShopName=re.compile(pShopPattern,re.S).findall(pShopHTML)
 			if(len(pShopName)>0):
 				# print('pShopName'+str(i)+' : '+pShopName[0])

@@ -16,7 +16,7 @@ class product(object):
 	goodRate=""#
 	poorCount=""#perhaps poorCount
 	poorRate=""#
-
+	resultpop=None#goodRate*averageScore*commentCount
 	result=None #goodRate*averageScore*commentCount/price
 
 	# 'ShowCount', 'ShowCountStr' ,
@@ -31,4 +31,4 @@ class product(object):
 		super(product, self).__init__()
 
 	def __repr__(self):
-		return repr((self.productId,self.pName.decode("string_escape"),self.pImg,self.pPrice,self.commentCount,self.commentCountStr,self.pShop.decode("string_escape"),self.averageScore,self.generalCount, self.generalRate, self.goodCount, self.goodRate, self.poorCount,self.poorRate , self.result))
+		return repr((self.productId,self.pName.decode("string_escape"),self.pImg,self.pPrice,self.commentCount,self.commentCountStr,self.pShop.decode("string_escape"),self.averageScore,self.generalCount, self.generalRate, self.goodCount, self.goodRate, self.poorCount,self.poorRate , self.result,self.resultpop))

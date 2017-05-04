@@ -27,14 +27,21 @@ class Database:
     def add_productInfo(self,pInfo):
         try:
             name = "pInfo"
+            resultname = "result:"+str(pInfo.result)+":productId:"+pInfo.productId
+            resultpopname="resultpop:"+str(pInfo.resultpop)+":productId:"+pInfo.productId
             productId=pInfo.productId
-            key = "productId:"+productId
+            key = productId
             val = json.dumps(pInfo, default=lambda o: o.__dict__, sort_keys=True, indent=4,ensure_ascii=False)
             val = json.loads(val)
             # val = json.dumps(pInfo.__dict__)
-            # print "val : "+val
+            # print "val : "+str(val)
             r = redis.StrictRedis(host=self.host,port=self.port)
-            r.hset(name,key,productId)
+            # r.hset(name,key,productId)
+            # r.hset(name,key,val)
+            r.zadd("result-range",pInfo.result,resultname)
+            r.zadd("resultpop-range",pInfo.resultpop,resultpopname)
+            # r.hmset(name,val)
+            # r.hset(name,key,productId)
             r.hmset(key,val)
         except Exception, exception:
             print exception
