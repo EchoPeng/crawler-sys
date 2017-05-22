@@ -29,6 +29,7 @@ RUN wget https://bootstrap.pypa.io/get-pip.py;python get-pip.py;rm -f get-#pip.p
 
 #RUN easy_install pip3
 RUN pip install --upgrade lxml requests
+RUN pip install --upgrade redis
 
 
 
@@ -36,7 +37,7 @@ RUN pip install --upgrade lxml requests
 #RUN pip install wheel Scrapy pymongo requests celery -i http://#pypi.douban.com/simple --trusted-host pypi.douban.com
 
 EXPOSE 27017 15672
-
+EXPOSE 6379 6379
 ENV container docker
 
 # for celery worker run as root user

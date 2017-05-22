@@ -1,3 +1,4 @@
+#!/bin/bash
 #pwd
 #ls
 #cd myspider
@@ -7,4 +8,5 @@
 #pwd
 #ls
 #python myspider/myspider-folder/control/mycontrol.py www.sina.com
-python spider-master/jd-spider/spider_thread.py 
+python spider-master/jd-spider/spider_thread.py && exit 
+#. /sbin/ifconfig

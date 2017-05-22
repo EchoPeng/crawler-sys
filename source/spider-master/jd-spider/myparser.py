@@ -158,8 +158,14 @@ class myparser:
 		# https://p.3.cn/prices/mgets?callback=jQuery9741103&type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&skuIds=J_4835534%2CJ_3478880%2CJ_3846673%2CJ_3129274%2CJ_11384140980%2CJ_11301207840&source=item-pc
 		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
 		#reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=14931164980011724710239&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+
 		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1&pdtk=&pduid=630457320&pdpin=&pdbp=0&skuIds="+skuIds
-		reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=14931164980011724710239&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=14931164980011724710239&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=1831729587&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=1831729587&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=1831729587&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=1831729587&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
+		# reqURL = "https://p.3.cn/prices/mgets?type=1&area=1_72_4137_0&pdtk=&pduid=14851498348671083659200&pdpin=&pdbp=0&source=item-pc&skuIds="+skuIds
 		print('reqURL : '+reqURL)
 		resultJSON=''
 		# reqJSON=None
@@ -168,6 +174,7 @@ class myparser:
 			# req = urllib2.Request(reqURL,header=send_headers)
 			# resultJSON = urllib2.urlopen(req).read().decode("utf-8")
 			resultJSON = urllib.urlopen(reqURL).read().decode("utf-8")
+			# print("resultJSON : "+resultJSON)
 			# reqJSON = urllib.urlopen(url=reqURL,proxies=self.proxies,timeout=3000)
 			# reqJSON = urllib.urlopen(url=reqURL)
 			# print(reqJSON.info())
@@ -177,6 +184,7 @@ class myparser:
 			print("Exception: attemp to try again... to fetch ")
 			try:
 				resultJSON=urllib.urlopen(reqURL).read().decode("utf-8")
+				# print("resultJSON : "+resultJSON)
 				# req = urllib2.Request(reqURL,header=send_headers)
 				# resultJSON = urllib2.urlopen(req).read().decode("utf-8")
 				# reqJSON = urllib.urlopen(url=reqURL)
@@ -417,9 +425,16 @@ class myparser:
 
 			pImgHTML=str(etree.tostring(pImg[0],encoding='utf-8',pretty_print=True,method='html'))
 			pImgSrc=re.compile(pImgPattern,re.S).findall(pImgHTML)
+			# <a target="_blank" href="//item.jd.com/3719293.html">
+			pURLPattern = 'target="_blank" href="(.*?)"'
+			pURL = re.compile(pURLPattern,re.S).findall(pImgHTML)
 			#print('pImgHTML : '+pImgHTML)
 			# if(i>3):
 			# 	print('pImg'+str(i)+' : '+etree.tostring(pImg[i],encoding='utf-8',pretty_print=True,method='html'))
+			if(len(pURL)>0):
+				# pURLtmp = pURL[0]
+				pInfo.pURL = pURL[0]
+
 			if(len(pImgSrc)>0):
 				# print('pImgSrc'+str(i)+' : '+pImgSrc[0])
 				# print('pImgSrc'+str(i)+' : '+pImgSrc[0][1])

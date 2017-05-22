@@ -2,7 +2,9 @@ import redis
 import json
 class Database:
     def __init__(self):
-        self.host = 'localhost'
+        # self.host = 'localhost'
+        # self.host = '172.18.102.209'
+        self.host = '192.168.42.1'
         self.port = 6379
 
     def write(self,website,city,year,month,day,deal_number):
@@ -33,16 +35,32 @@ class Database:
             key = productId
             val = json.dumps(pInfo, default=lambda o: o.__dict__, sort_keys=True, indent=4,ensure_ascii=False)
             val = json.loads(val)
-            # val = json.dumps(pInfo.__dict__)
-            # print "val : "+str(val)
             r = redis.StrictRedis(host=self.host,port=self.port)
-            # r.hset(name,key,productId)
-            # r.hset(name,key,val)
             r.zadd("result-range",pInfo.result,resultname)
             r.zadd("resultpop-range",pInfo.resultpop,resultpopname)
-            # r.hmset(name,val)
-            # r.hset(name,key,productId)
             r.hmset(key,val)
+        except Exception, exception:
+            print exception
+
+    def add_brandlist(self,brandlist,brandnamelist):
+        try:
+            key = "brandlist"
+            r = redis.StrictRedis(host=self.host,port=self.port)
+            brandlist = json.dumps(brandlist, sort_keys=True, indent=0, ensure_ascii=False)
+            r.set(key,brandlist)
+            brandnamelist = json.dumps(brandnamelist, sort_keys=True, indent=0, ensure_ascii=False)
+            r.set("brandnamelist",brandnamelist)
+        except Exception, exception:
+            print exception
+
+    def get_brandlist(self):
+        try:
+            key = "brandlist"
+            r = redis.StrictRedis(host=self.host,port=self.port)
+            brandlist = r.get(key)
+            brandnamelist = r.get("brandnamelist")
+            print(brandlist)
+            print(brandnamelist)
         except Exception, exception:
             print exception
 

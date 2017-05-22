@@ -4,6 +4,7 @@ class product(object):
 	"""docstring for product"""
 	productId = ""#phone id not contains 'J_'
 	pName=""#phone name
+	pURL=""
 	pImg=""#phone img url
 	pPrice=""#phone open current price
 	commentCount=""#perhaps commentCount
@@ -31,4 +32,4 @@ class product(object):
 		super(product, self).__init__()
 
 	def __repr__(self):
-		return repr((self.productId,self.pName.decode("string_escape"),self.pImg,self.pPrice,self.commentCount,self.commentCountStr,self.pShop.decode("string_escape"),self.averageScore,self.generalCount, self.generalRate, self.goodCount, self.goodRate, self.poorCount,self.poorRate , self.result,self.resultpop))
+		return repr((self.productId,self.pName.decode("string_escape"),self.pImg,self.pURL,self.pPrice,self.commentCount,self.commentCountStr,self.pShop.decode("string_escape"),self.averageScore,self.generalCount, self.generalRate, self.goodCount, self.goodRate, self.poorCount,self.poorRate , self.result,self.resultpop))

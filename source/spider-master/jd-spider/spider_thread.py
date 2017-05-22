@@ -2,7 +2,7 @@ import threading,time
 import multiprocessing
 import random,time
 import jdspider
-import myparser,random
+import myparser,random,brand
 from multiprocessing import Pool
 """
 class MyThread(threading.Thread):
@@ -37,7 +37,7 @@ def run(q):
             i=obj[1]
             myparserDemo=obj[2]
             #print(str(i))
-            jdDemo.saveHtml(int(i))
+            #jdDemo.saveHtml(int(i))
             #print('Get %s from queue.' % value)
             folderPath="/data/html-source-code/"
             file_name=str(i)+'.html'
@@ -60,8 +60,8 @@ def mulThreadRun(jdDemo):
     q = multiprocessing.JoinableQueue()
     pw1 = multiprocessing.Process(target=run, args=(q,))
     pw2 = multiprocessing.Process(target=run, args=(q,))
-    pw3 = multiprocessing.Process(target=run, args=(q,))
-    pw4 = multiprocessing.Process(target=run, args=(q,))
+    # pw3 = multiprocessing.Process(target=run, args=(q,))
+    # pw4 = multiprocessing.Process(target=run, args=(q,))
     # pw5 = multiprocessing.Process(target=run, args=(q,))
     # pw6 = multiprocessing.Process(target=run, args=(q,))
     # pw7 = multiprocessing.Process(target=run, args=(q,))
@@ -76,8 +76,8 @@ def mulThreadRun(jdDemo):
     # pw16 = multiprocessing.Process(target=run, args=(q,))
     pw1.daemon = True
     pw2.daemon = True
-    pw3.daemon = True
-    pw4.daemon = True
+    # pw3.daemon = True
+    # pw4.daemon = True
     # pw5.daemon = True
     # pw6.daemon = True
     # pw7.daemon = True
@@ -92,8 +92,8 @@ def mulThreadRun(jdDemo):
     # pw16.daemon = True
     pw1.start()
     pw2.start()
-    pw3.start()
-    pw4.start()
+    # pw3.start()
+    # pw4.start()
     # pw5.start()
     # pw6.start()
     # pw7.start()
@@ -117,11 +117,20 @@ def mulThreadRun(jdDemo):
     pass
 
 def downloadSource():
+    filepath='/data/result_status'
+    fileresult=open(filepath,"w")
+    fileresult.write("")
+    fileresult.close()
     start_url="https://list.jd.com/list.html?cat=9987,653,655"
+    brandspiderDemo = brand.brandspider(start_url)
+    brandspiderDemo.getbrandlist(start_url)
     jdspiderDemo=jdspider.jdspider(start_url)
     print(jdspiderDemo.getPageNum())
     mulThreadRun(jdspiderDemo)
     print("collecting source is over!")
+    fileresult=open(filepath,"w")
+    fileresult.write("ok")
+
 """
     p=Pool()
     PageNum=int(jdspiderDemo.getPageNum())

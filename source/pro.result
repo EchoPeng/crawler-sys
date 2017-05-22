@@ -1,0 +1,118 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  37852  5872 ?        Ss   Apr22   0:10 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    Apr22   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    Apr22   0:17 [ksoftirqd/0]
+root         5  0.0  0.0      0     0 ?        S<   Apr22   0:00 [kworker/0:0H]
+root         7  0.0  0.0      0     0 ?        S    Apr22  14:46 [rcu_sched]
+root         8  0.0  0.0      0     0 ?        S    Apr22   0:00 [rcu_bh]
+root         9  0.0  0.0      0     0 ?        S    Apr22   0:00 [migration/0]
+root        10  0.0  0.0      0     0 ?        S    Apr22   0:08 [watchdog/0]
+root        11  0.0  0.0      0     0 ?        S    Apr22   0:00 [kdevtmpfs]
+root        12  0.0  0.0      0     0 ?        S<   Apr22   0:00 [netns]
+root        13  0.0  0.0      0     0 ?        S<   Apr22   0:00 [perf]
+root        14  0.0  0.0      0     0 ?        S    Apr22   0:00 [xenwatch]
+root        15  0.0  0.0      0     0 ?        S    Apr22   0:00 [xenbus]
+root        17  0.0  0.0      0     0 ?        S    Apr22   0:00 [khungtaskd]
+root        18  0.0  0.0      0     0 ?        S<   Apr22   0:00 [writeback]
+root        19  0.0  0.0      0     0 ?        SN   Apr22   0:00 [ksmd]
+root        20  0.0  0.0      0     0 ?        SN   Apr22   0:04 [khugepaged]
+root        21  0.0  0.0      0     0 ?        S<   Apr22   0:00 [crypto]
+root        22  0.0  0.0      0     0 ?        S<   Apr22   0:00 [kintegrityd]
+root        23  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        24  0.0  0.0      0     0 ?        S<   Apr22   0:00 [kblockd]
+root        25  0.0  0.0      0     0 ?        S<   Apr22   0:00 [ata_sff]
+root        26  0.0  0.0      0     0 ?        S<   Apr22   0:00 [md]
+root        27  0.0  0.0      0     0 ?        S<   Apr22   0:00 [devfreq_wq]
+root        30  0.0  0.0      0     0 ?        S    Apr22   0:00 [kswapd0]
+root        31  0.0  0.0      0     0 ?        S<   Apr22   0:00 [vmstat]
+root        32  0.0  0.0      0     0 ?        S    Apr22   0:00 [fsnotify_mark]
+root        33  0.0  0.0      0     0 ?        S    Apr22   0:00 [ecryptfs-kthrea]
+root        49  0.0  0.0      0     0 ?        S<   Apr22   0:00 [kthrotld]
+root        50  0.0  0.0      0     0 ?        S<   Apr22   0:00 [acpi_thermal_pm]
+root        51  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        52  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        53  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        54  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        55  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        56  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        57  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        58  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        59  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        60  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        61  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        62  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        63  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        64  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        65  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        66  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        67  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        68  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        69  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        70  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        71  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        72  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        73  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        74  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        75  0.0  0.0      0     0 ?        S    Apr22   0:00 [scsi_eh_0]
+root        76  0.0  0.0      0     0 ?        S<   Apr22   0:00 [scsi_tmf_0]
+root        77  0.0  0.0      0     0 ?        S    Apr22   0:00 [scsi_eh_1]
+root        78  0.0  0.0      0     0 ?        S<   Apr22   0:00 [scsi_tmf_1]
+root        84  0.0  0.0      0     0 ?        S<   Apr22   0:00 [ipv6_addrconf]
+root        97  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root        98  0.0  0.0      0     0 ?        S<   Apr22   0:00 [deferwq]
+root        99  0.0  0.0      0     0 ?        S<   Apr22   0:00 [charger_manager]
+root       137  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root       138  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root       139  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root       140  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root       141  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root       142  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root       143  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root       144  0.0  0.0      0     0 ?        S<   Apr22   0:00 [bioset]
+root       145  0.0  0.0      0     0 ?        S<   Apr22   0:00 [kpsmoused]
+root       147  0.0  0.0      0     0 ?        S<   Apr22   0:00 [ttm_swap]
+root       167  0.0  0.0      0     0 ?        S<   Apr22   0:06 [kworker/0:1H]
+root       169  0.0  0.0      0     0 ?        S    Apr22   0:18 [jbd2/xvda1-8]
+root       170  0.0  0.0      0     0 ?        S<   Apr22   0:00 [ext4-rsv-conver]
+root       208  0.0  2.5  88880 52724 ?        Ss   Apr22   0:06 /lib/systemd/systemd-journald
+root       218  0.0  0.0      0     0 ?        S    Apr22   0:00 [kauditd]
+root       260  0.0  0.2  45480  5056 ?        Ss   Apr22   0:01 /lib/systemd/systemd-udevd
+syslog     570  0.0  0.1 260632  3360 ?        Ssl  Apr22   0:01 /usr/sbin/rsyslogd -n
+root       598  0.0  0.1  30756  3072 ?        Ss   Apr22   0:02 /usr/sbin/cron -f
+root       600  0.0  0.3 277496  6176 ?        Ssl  Apr22   0:55 /usr/lib/accountsservice/accounts-daemon
+root       601  0.0  0.1  20452  2928 ?        Ss   Apr22   0:01 /lib/systemd/systemd-logind
+daemon     602  0.0  0.1  26044  2268 ?        Ss   Apr22   0:00 /usr/sbin/atd -f
+message+   610  0.0  0.1  42904  3968 ?        Ss   Apr22   0:01 /usr/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation
+root       647  0.0  0.0  25536   412 ?        Ssl  Apr22   0:00 /usr/sbin/gshelld
+root       667  0.0  0.2  32140  5168 ?        Ssl  Apr22   9:39 /usr/local/aegis/aegis_update/AliYunDunUpdate
+root       707  0.0  0.1 708868  2932 ?        Ssl  Apr22   0:07 /usr/sbin/nscd
+root       790  0.3  0.5 109016 11572 ?        Sl   Apr22  68:16 /usr/local/aegis/alihids/AliHids
+root       836  0.0  1.0 231028 20468 ?        Ssl  Apr22   7:29 /usr/local/bin/daomonit -log=/var/log/daomonit.log
+root       857  0.1  2.2 365488 46612 ?        Ssl  Apr22  23:47 /usr/bin/dockerd -H fd://
+root       927  0.0  0.0   9452   772 tty1     Ss+  Apr22   0:00 /sbin/agetty --noclear tty1 linux
+root       972  0.0  0.0  23212  1940 ?        Sl   Apr22  13:54 /usr/local/cloudmonitor/wrapper/bin/./wrapper /usr/local/cloudmonitor/wrapper/bin/../conf/wrapper.conf wrapper.syslog.ident=cloudmonitor wrapper.pidfile=/usr/local/cloudmonitor/wrapper/bin/./cloudmonitor.pid wrapper.daemonize=TRUE wrapper.name=cloudmonitor wrapper.displayname=cloudmonitor wrapper.statusfile=/usr/local/cloudmonitor/wrapper/bin/./cloudmonitor.status wrapper.java.statusfile=/usr/local/cloudmonitor/wrapper/bin/./cloudmonitor.java.status wrapper.lockfile=/var/lock/subsys/cloudmonitor wrapper.script.version=3.5.27
+ntp        975  0.0  0.2  98204  4252 ?        Ss   Apr22   1:14 /usr/sbin/ntpd -p /var/run/ntpd.pid -g -u 108:114
+root       984  0.6  3.4 1949672 71396 ?       Sl   Apr22 142:25 /usr/local/cloudmonitor/jre/bin/java -Djava.compiler=none -XX:-UseGCOverheadLimit -XX:NewRatio=1 -XX:SurvivorRatio=8 -XX:+UseSerialGC -Djava.io.tmpdir=../../tmp -Xms16m -Xmx32m -Djava.library.path=../lib:../../lib -classpath ../lib/wrappertest.jar:../lib/wrapper.jar:../../config:../../lib/agent-commons-1.1.60.jar:../../lib/agent-core-1.1.60.jar:../../lib/agent-model-1.1.60.jar:../../lib/aopalliance-1.0.jar:../../lib/commons-logging-1.2.jar:../../lib/commons-net-3.5.jar:../../lib/gson-2.4.jar:../../lib/log4j-1.2.16.jar:../../lib/sigar-1.6.5.132.jar:../../lib/spring-aop-4.2.4.RELEASE.jar:../../lib/spring-beans-4.2.4.RELEASE.jar:../../lib/spring-context-4.2.4.RELEASE.jar:../../lib/spring-core-4.2.4.RELEASE.jar:../../lib/spring-expression-4.2.4.RELEASE.jar:../../lib/system-plugin-1.1.60.jar:../../lib/updater-1.1.60-jar-with-dependencies.jar -Dwrapper.key=9ECXPoU_CUpSsBHr -Dwrapper.port=32000 -Dwrapper.jvm.port.min=31000 -Dwrapper.jvm.port.max=31999 -Dwrapper.disable_console_input=TRUE -Dwrapper.pid=972 -Dwrapper.version=3.5.27 -Dwrapper.native_library=wrapper -Dwrapper.arch=x86 -Dwrapper.service=TRUE -Dwrapper.cpu.timeout=10 -Dwrapper.jvmid=1 com.aliyun.tianji.cloudmonitor.Application
+root      1025  0.0  0.6 225832 13224 ?        Ssl  Apr22  17:31 docker-containerd -l unix:///var/run/docker/libcontainerd/docker-containerd.sock --metrics-interval=0 --start-timeout 2m --state-dir /var/run/docker/libcontainerd/containerd --shim docker-containerd-shim --runtime docker-runc
+uuidd     1051  0.0  0.0  29904  1392 ?        Ss   Apr22   0:00 /usr/sbin/uuidd --socket-activation
+root      3734  0.0  0.2  36800  4420 ?        Ss   Apr26   0:00 /lib/systemd/systemd --user
+root      3737  0.0  0.0  61440  1980 ?        S    Apr26   0:00 (sd-pam)
+root      7419  0.0  0.0      0     0 ?        S    18:10   0:00 [kworker/u30:0]
+root      7855  0.0  0.2  59432  6136 ?        Ss   Apr30   0:00 /usr/sbin/sshd -D
+root      7945  0.0  0.0      0     0 ?        S    18:46   0:00 [kworker/0:2]
+root      8103  0.0  0.0      0     0 ?        S    19:11   0:00 [kworker/0:1]
+root      8104  0.0  0.3  96032  6728 ?        Ss   19:11   0:00 sshd: root@pts/1
+root      8122  0.0  0.2  16504  5488 pts/1    Ss+  19:11   0:00 -bash
+root      8163  0.0  0.0      0     0 ?        S    19:12   0:00 [kworker/u30:1]
+root      8182  0.0  0.3  96036  6732 ?        Ss   19:14   0:00 sshd: root@pts/2
+root      8200  0.0  0.2  16512  5564 pts/2    Ss   19:14   0:00 -bash
+root      8421  0.0  0.3  95820  6768 ?        Ss   19:57   0:00 sshd: root@notty
+root      8424  0.0  0.0      0     0 ?        S    19:57   0:00 [kworker/0:0]
+root      8440  0.0  0.0   4860   796 ?        Ss   19:57   0:00 /usr/lib/openssh/sftp-server
+root      8454  0.0  0.0  30876  1552 pts/2    R+   19:59   0:00 ps -aux
+root     14012  0.2  0.8 123660 17776 ?        Ssl  May03   9:37 /usr/local/aegis/aegis_client/aegis_10_19/AliYunDun
+dirmngr  21530  0.0  0.2  37012  4476 ?        Ss   May01   0:00 /lib/systemd/systemd --user
+dirmngr  21533  0.0  0.0  61728  1976 ?        S    May01   0:00 (sd-pam)
+dirmngr  21543  0.0  0.0  20704   184 ?        Ss   May01   0:49 /usr/bin/dirmngr --daemon --sh
+root     23926  0.0  1.3  62564 28412 ?        Sl   May04   1:07 redis-server *:6379
+root     28833  0.0  0.6 399124 12972 ?        Sl   May05   0:19 /usr/lib/daomonit/daotunnel -log /var/log/daotunnel.log -config /etc/daocloud/daotunnel.yml start docker

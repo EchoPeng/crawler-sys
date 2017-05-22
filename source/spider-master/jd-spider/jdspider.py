@@ -54,7 +54,8 @@ class jdspider(object):
 		return lastPageNum
 
 	def saveHtml(self,i):
-		url=self.start_url+'&page='+str(i)
+		url=self.start_url+'&page='+str(i)+'&sort=sort_rank_asc&trans=1&JL=6_0_0#J_main'
+		print('source url : '+url)
 		source=self.getSource(url)
 		fileFolder="/data/html-source-code/"
 		filePath=fileFolder+str(i)+".html"
